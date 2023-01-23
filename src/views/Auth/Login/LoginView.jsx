@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import "./LoginView.css";
 
 
 function LoginView() {
@@ -33,13 +34,19 @@ function LoginView() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">email</label>
-        <input type="text" name='email' placeholder="email" />
-        <label htmlFor="password">password</label>
-        <input type="password" name='password' placeholder="" />
-        <button>Login</button>
-      </form>
+      <div className="container">
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="email">email:</label>
+          <div>
+            <input type="text" name='email' placeholder="email" required/>
+          </div>
+          <label htmlFor="password">password</label>
+          <div>
+            <input type="password" name='password' placeholder="*******" required/>
+          </div>
+          <button>Login</button>
+        </form>
+      </div>
     </div>
   );
 }
