@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
+
 function LoginView() {
+  const navigate = useNavigate();
   async function handleSubmit(e) {
     e.preventDefault();
     const email = e.currentTarget.elements['email'].value;
@@ -23,6 +27,7 @@ function LoginView() {
       localStorage.setItem('token', '');
     } else {
       localStorage.setItem('token', result.token);
+      navigate('/home')
     }
   }
 
