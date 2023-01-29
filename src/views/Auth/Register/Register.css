@@ -1,0 +1,21 @@
+.register-form {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-input {
+    border-style: none;
+    border-bottom: 1px solid black;
+    margin-top: 20px;
+}
+
+.register-input:focus {
+    outline: none;
+}
+
+.register-button {
+    margin-top: 15px;
+}
