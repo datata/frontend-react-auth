@@ -4,17 +4,21 @@ import Register from "./views/Auth/Register/Register";
 import { Home } from "./views/home/Home";
 import Profile from "./views/Profile";
 import Welcome from "./views/Welcome";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<LoginView />} />¡
-        <Route path="/home" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
+      <Provider store={store}>
+        <Routes>
+          <Route path="/" element={<Welcome />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<LoginView />} />¡
+          <Route path="/home" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </Provider>
     </BrowserRouter>
   )
 }
