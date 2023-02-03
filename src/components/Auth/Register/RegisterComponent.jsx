@@ -6,35 +6,23 @@ import './RegisterComponent.css'
 
 export const RegisterComponent = () => {
     const navigate = useNavigate();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [name, setName] = useState('');
+    const [registerUserData, setRegisterUserData] = useState({
+        email: "",
+        password: "",
+        name:""
+    });
 
-    function nameHandle(e) {
-        e.preventDefault();
-        setName(e.target.value)
-    }
-
-    function emailHandle(e) {
-        e.preventDefault();
-        setEmail(e.target.value)
-    }
-
-    function passwordHandle(e) {
-        e.preventDefault();
-        setPassword(e.target.value)
+    function registerDataHandle(e) {
+        setRegisterUserData({
+            ...registerUserData,
+            [e.target.name]: e.target.value
+        })
     }
 
     async function handleSubmit(e) {
         e.preventDefault();
 
-        const registerData = {
-            name,
-            email,
-            password
-        }
-
-        const registerResult = await register(registerData)
+        const registerResult = await register(registerUserData)
 
         if (!registerResult.success) {
             alert(
@@ -47,21 +35,22 @@ export const RegisterComponent = () => {
             navigate('/login');
         }
     }
+    
     return (
         <div>
             <div className="register-form">
                 <form onSubmit={handleSubmit}>
                     {/* <label htmlFor="name">name:</label> */}
                     <div>
-                        <input type="text" name='name' className="register-input" onChange={nameHandle} placeholder="name" required />
+                        <input type="text" name='name' className="register-input" onChange={registerDataHandle} placeholder="name" required />
                     </div>
                     {/* <label htmlFor="email">email:</label> */}
                     <div>
-                        <input type="email" name='email' className="register-input" onChange={emailHandle} placeholder="email" required />
+                        <input type="email" name='email' className="register-input" onChange={registerDataHandle} placeholder="email" required />
                     </div>
                     {/* <label htmlFor="password">password</label> */}
                     <div>
-                        <input type="password" name='password' className="register-input" onChange={passwordHandle} placeholder="*******" required />
+                        <input type="password" name='password' className="register-input" onChange={registerDataHandle} placeholder="*******" required />
                     </div>
                     <button className="register-button">Register</button>
                 </form>
