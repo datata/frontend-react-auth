@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { register } from "../../../services/apiCalls";
 import './Register.css';
 
 
@@ -27,23 +28,16 @@ function Register() {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        const data = {
+        const registerData = {
             name,
             email,
             password
         }
 
-        const register = await fetch('http://localhost:8000/api/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        const result = await register.json();
-        if (!result.success) {
-            alert(result?.message || 'Something went wrong');
+        const registerResult = await register(registerData)
+        
+        if (!registerResult.success) {
+            alert(registerResult?.message || 'Something went wrong');
         } else {
             navigate('/login');
         }

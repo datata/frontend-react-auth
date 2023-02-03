@@ -12,4 +12,18 @@ export const login = async (loginData) => {
     const result = await login.json();
 
     return result;
-} 
+}
+
+export const register = async (registerData) => {
+    const register = await fetch(host + 'api/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(registerData)
+    });
+
+    const result = await register.json();
+
+    return result;
+}
