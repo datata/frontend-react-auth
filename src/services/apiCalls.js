@@ -27,3 +27,17 @@ export const register = async (registerData) => {
 
     return result;
 }
+
+export const profile = async (token) => {
+    const register = await fetch(host + 'api/me', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        }
+    });
+
+    const result = await register.json();
+
+    return result;
+}

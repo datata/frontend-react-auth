@@ -1,15 +1,16 @@
 import React from 'react'
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateJwt } from '../../../feature/auth/authSlice'
-import { login } from "../../../services/apiCalls";
+import { login, profile } from "../../../services/apiCalls";
 
 import './LoginComponent.css'
 
 export const LoginComponent = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const auth = useSelector(state => state.auth)
 
     const [loginUserData, setLoginUserData] = useState({
         email: "",
@@ -32,8 +33,17 @@ export const LoginComponent = () => {
             alert(loginResult?.message)
         } else {
             dispatch(updateJwt(loginResult.token));
+        }
+
+        const userProfile = await profile(auth.jwt);
+
+        if (!userProfile.success) {
+            navigate('/login');
+        } else {
             navigate('/home');
         }
+
+        console.log(userProfile);
     }
 
     return (
