@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { updateJwt } from '../../../feature/auth/authSlice'
 import "./LoginView.css";
 
 
 function LoginView() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -37,9 +40,8 @@ function LoginView() {
     const result = await login.json();
     if (!result.success) {
       alert(result?.message)
-      // localStorage.setItem('isAuth', false);
     } else {
-      localStorage.setItem('token', result.token);
+      dispatch(updateJwt(result.token));
       navigate('/home');
     }
   }
