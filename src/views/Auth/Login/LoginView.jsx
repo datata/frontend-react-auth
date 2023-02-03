@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateJwt } from '../../../feature/auth/authSlice'
+import { login } from "../../../services/apiCalls";
 import "./LoginView.css";
 
 
@@ -24,24 +25,17 @@ function LoginView() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const data = {
+    const loginData = {
       email,
       password
     }
 
-    const login = await fetch('http://localhost:8000/api/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    });
+    const loginResult = await login(loginData);
 
-    const result = await login.json();
-    if (!result.success) {
-      alert(result?.message)
+    if (!loginResult.success) {
+      alert(loginResult?.message)
     } else {
-      dispatch(updateJwt(result.token));
+      dispatch(updateJwt(loginResult.token));
       navigate('/home');
     }
   }
