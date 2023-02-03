@@ -10,28 +10,23 @@ import './LoginComponent.css'
 export const LoginComponent = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
 
-    function emailHandle(e) {
-        e.preventDefault();
-        setEmail(e.target.value)
-    }
+    const [loginUserData, setLoginUserData] = useState({
+        email: "",
+        password: "",
+    });
 
-    function passwordHandle(e) {
-        e.preventDefault();
-        setPassword(e.target.value)
+    function loginDataHandle(e) {
+        setLoginUserData({
+            ...loginUserData,
+            [e.target.name]: e.target.value
+        })
     }
 
     async function handleSubmit(e) {
         e.preventDefault();
 
-        const loginData = {
-            email,
-            password
-        }
-
-        const loginResult = await login(loginData);
+        const loginResult = await login(loginUserData);
 
         if (!loginResult.success) {
             alert(loginResult?.message)
@@ -41,18 +36,18 @@ export const LoginComponent = () => {
         }
     }
 
-
     return (
         <div>
+            {/* <pre>{loginUserData}</pre> */}
             <div className="login-form">
                 <form onSubmit={handleSubmit}>
                     {/* <label htmlFor="email">email:</label> */}
                     <div>
-                        <input className="login-input" type="email" name='email' onChange={emailHandle} placeholder="email" required />
+                        <input className="login-input" type="email" name='email' onChange={loginDataHandle} placeholder="email" required />
                     </div>
                     {/* <label htmlFor="password">password</label> */}
                     <div>
-                        <input className="login-input" type="password" name='password' onChange={passwordHandle} placeholder="*******" required />
+                        <input className="login-input" type="password" name='password' onChange={loginDataHandle} placeholder="*******" required />
                     </div>
                     <button className="login-button">Login</button>
                 </form>
