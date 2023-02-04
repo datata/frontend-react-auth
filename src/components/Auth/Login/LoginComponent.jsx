@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { updateJwt, updateUserProfile } from '../../../feature/auth/authSlice'
+import { updateIsLogged, updateJwt, updateUserProfile } from '../../../feature/auth/authSlice'
 import { login, profile } from "../../../services/apiCalls";
 
 import './LoginComponent.css'
@@ -32,6 +32,7 @@ export const LoginComponent = () => {
             return alert(loginResult?.message)
         } else {
             dispatch(updateJwt(loginResult.token));
+            dispatch(updateIsLogged(true))
         }
 
         const userProfile = await profile(loginResult.token);
