@@ -6,11 +6,14 @@ import Welcome from "./views/Welcome";
 import { Profile } from "./views/Auth/Profile/Profile";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import { NavBar } from "./components/NavBar/NavBar";
+import { Footer } from "./components/Footer/Footer";
 
 function App() {
   return (
     <BrowserRouter>
       <Provider store={store}>
+        <NavBar />
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="/register" element={<Register />} />
@@ -18,6 +21,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
+        <Footer />
       </Provider>
     </BrowserRouter>
   )
