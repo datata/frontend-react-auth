@@ -19,7 +19,7 @@ export const NavBar = () => {
                     <div className='navbar'>
                         <div>
                             <Link to="/profile" style={{ textDecoration: 'none' }}>
-                                <div>
+                                <div className='navbar-menu-links'>
                                     Profile
                                 </div>
                             </Link>
@@ -28,6 +28,7 @@ export const NavBar = () => {
                             <Link to="/login" style={{ textDecoration: 'none' }} >
                                 <div
                                     onClick={handleLogout}
+                                    className="navbar-menu-links"
                                 >
                                     Logout
                                 </div>
@@ -40,14 +41,14 @@ export const NavBar = () => {
                     <div className='navbar'>
                         <div>
                             <Link to="/login" style={{ textDecoration: 'none' }}>
-                                <div>
+                                <div className='navbar-menu-links'>
                                     Login
                                 </div>
                             </Link>
                         </div>
                         <div>
                             <Link to="/register" style={{ textDecoration: 'none' }}>
-                                <div>
+                                <div className='navbar-menu-links'>
                                     Register
                                 </div>
                             </Link>

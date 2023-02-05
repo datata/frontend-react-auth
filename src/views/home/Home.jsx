@@ -18,6 +18,9 @@ export const Home = () => {
       <Link to="/profile">
         Profile
       </Link>
+      <Link to="/tasks">
+        Tasks
+      </Link>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { NavBar } from "./components/NavBar/NavBar";
 import { Footer } from "./components/Footer/Footer";
+import { TaskList } from "./views/TaskList/TaskList";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={<LoginView />} />¡
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/tasks" element={<TaskList />} />
         </Routes>
         <Footer />
       </Provider>

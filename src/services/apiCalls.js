@@ -41,3 +41,17 @@ export const profile = async (token) => {
 
     return result;
 }
+
+export const getTasks = async (token) => {
+    const getTasks = await fetch(host + 'api/tasks', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        }
+    });
+
+    const result = await getTasks.json();
+
+    return result;
+}
