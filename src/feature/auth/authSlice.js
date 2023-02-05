@@ -25,8 +25,15 @@ export const authSlice = createSlice({
         updateIsLogged: (state, action) => {
             state.isLogged = action.payload
         },
+        logout: (state, action) => {
+            state.user.id = "";
+            state.user.name = "";
+            state.user.email = "";
+            state.jwt = "";
+            state.isLogged = "";
+        }
     }
 })
 
-export const { updateJwt, updateUserProfile, updateIsLogged } = authSlice.actions;
+export const { updateJwt, updateUserProfile, updateIsLogged, logout } = authSlice.actions;
 export default authSlice.reducer
