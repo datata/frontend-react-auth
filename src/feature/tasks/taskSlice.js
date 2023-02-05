@@ -11,8 +11,12 @@ export const taskSlice = createSlice({
         updateTasks: (state, action) => {
             state.tasks = action.payload
         },
+        logout: (state, action) => {
+            console.log('logout');
+            state.tasks = [];
+        }
     }
 })
 
-export const { updateTasks } = taskSlice.actions;
+export const { updateTasks, logout } = taskSlice.actions;
 export default taskSlice.reducer

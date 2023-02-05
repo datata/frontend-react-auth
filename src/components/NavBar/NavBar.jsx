@@ -2,6 +2,8 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../../feature/auth/authSlice'
+import { logout as taskLogout } from '../../feature/tasks/taskSlice'
+
 import './NavBar.css'
 
 export const NavBar = () => {
@@ -10,6 +12,7 @@ export const NavBar = () => {
 
     function handleLogout(e) {
         dispatch(logout({}))
+        dispatch(taskLogout());
     }
 
     return (
