@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { TaskCard } from '../../components/task/TaskCard';
 import { updateTasks } from '../../feature/tasks/taskSlice';
