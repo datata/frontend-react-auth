@@ -9,6 +9,7 @@ import { store } from "./store/store";
 import { NavBar } from "./components/NavBar/NavBar";
 import { Footer } from "./components/Footer/Footer";
 import { TaskList } from "./views/TaskList/TaskList";
+import { CreateTask } from "./views/CreateTask/CreateTask";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/tasks" element={<TaskList />} />
+          <Route path="/create-task" element={<CreateTask />} />
         </Routes>
         <Footer />
       </Provider>

@@ -1,0 +1,21 @@
+.create-task-form {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-task-input {
+    border-style: none;
+    border-bottom: 1px solid black;
+    margin-top: 20px;
+}
+
+.create-task-input:focus {
+    outline: none;
+}
+
+.create-task-button {
+    margin-top: 15px;
+}

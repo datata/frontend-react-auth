@@ -55,3 +55,18 @@ export const getTasks = async (token) => {
 
     return result;
 }
+
+export const createTask = async (createTaskData, token) => {
+    const register = await fetch(host + 'api/tasks', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
+        },
+        body: JSON.stringify(createTaskData)
+    });
+
+    const result = await register.json();
+
+    return result;
+}

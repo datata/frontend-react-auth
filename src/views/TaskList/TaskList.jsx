@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom';
 import { TaskCard } from '../../components/task/TaskCard';
 import { updateTasks } from '../../feature/tasks/taskSlice';
 import { getTasks } from '../../services/apiCalls'
@@ -24,6 +25,9 @@ export const TaskList = () => {
     return (
         <div className='tasks-list'>
             <p>Tasks</p>
+            <Link to="/create-task">
+                <button>New task</button>
+            </Link>
             {taskUser.tasks.length > 0 ?
                 (
                     taskUser.tasks.map(task => {
