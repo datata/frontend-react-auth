@@ -1,6 +1,6 @@
-/* .login-form {
+.login-form {
     width: 100vw;
-    height: 100vh;
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,4 +18,4 @@
 
 .login-button {
     margin-top: 15px;
-} */
+}

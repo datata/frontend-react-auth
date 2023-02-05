@@ -1,21 +1,26 @@
-/* .login-form {
+.profile-form {
     width: 100vw;
-    height: 100vh;
+    height: 80vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.login-input {
+.profile-input {
     border-style: none;
     border-bottom: 1px solid black;
     margin-top: 20px;
 }
 
-.login-input:focus {
+.profile-input:focus {
     outline: none;
 }
 
-.login-button {
+.profile-button {
     margin-top: 15px;
-} */
+}
+
+.profile-h1 {
+    color: black;
+}

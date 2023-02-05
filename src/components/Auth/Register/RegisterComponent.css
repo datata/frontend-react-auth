@@ -1,21 +1,21 @@
-/* .login-form {
+.register-form {
     width: 100vw;
-    height: 100vh;
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.login-input {
+.register-input {
     border-style: none;
     border-bottom: 1px solid black;
     margin-top: 20px;
 }
 
-.login-input:focus {
+.register-input:focus {
     outline: none;
 }
 
-.login-button {
+.register-button {
     margin-top: 15px;
-} */
+}

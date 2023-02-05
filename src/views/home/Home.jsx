@@ -1,56 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { TaskCard } from '../../components/task/TaskCard';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import './Home.css'
 
 export const Home = () => {
-  const [tasks, setTasks] = useState([]);
-  const [token, setToken] = useState(localStorage.getItem('token'));
+  const userProfile = useSelector(state => state.auth);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!token) {
-      console.log('useEffect home');
-      navigate('/login');
-    }
-
-    if (tasks.length === 0) {
-      fetch('http://localhost:8000/api/tasks', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + token
-        }
-      })
-        .then((res) => {
-          if (res.status === 401) {
-            setToken('');
-            localStorage.setItem('token', '')
-            navigate('/login');
-          } else {
-            return res.json()
-          }
-        })
-        .then((data) => {
-          console.log(data);
-          setTasks(data?.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }, [tasks, token, navigate])
+      if (userProfile.jwt.length === 0) {
+          navigate('/login')
+      }
+  })
 
   return (
-    <div>
-      <h1>Task List</h1>
-      {
-        tasks.map((task) => (
-          <div key={task.id}>
-            <TaskCard task={task} />
-          </div>
-        ))
-      }
+    <div className='home'>
+      <Link to="/profile">
+        Profile
+      </Link>
     </div>
   )
 }
