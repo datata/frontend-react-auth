@@ -17,7 +17,7 @@ export const Profile = () => {
         <div className='profile-form'>
             <Link to={'/home'}>Home</Link>
             <form>
-                <h1>userPROFILE</h1>
+                <h1 className='profile-h1'>userPROFILE</h1>
                 <div>
                     <input className='profile-input' type="text" defaultValue={userProfile.user.name} disabled />
                 </div>
