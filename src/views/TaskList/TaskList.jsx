@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { TaskCard } from '../../components/task/TaskCard';
 import { updateTasks } from '../../feature/tasks/taskSlice';
 import { getTasks } from '../../services/apiCalls'
+import './TaskList.css'
 
 export const TaskList = () => {
     const authUser = useSelector(state => state.auth);
