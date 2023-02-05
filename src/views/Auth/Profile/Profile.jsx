@@ -11,7 +11,7 @@ export const Profile = () => {
         if (userProfile.jwt.length === 0) {
             navigate('/login')
         }
-    }, [])
+    })
 
     return (
         <div className='profile-form'>
