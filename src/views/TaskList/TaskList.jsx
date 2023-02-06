@@ -23,24 +23,27 @@ export const TaskList = () => {
     }, [taskUser, authUser, dispatch])
 
     return (
-        <div className='tasks-list'>
+        <div>
             <p>Tasks</p>
             <Link to="/create-task">
                 <button>New task</button>
             </Link>
-            {taskUser.tasks.length > 0 ?
-                (
-                    taskUser.tasks.map(task => {
-                        return <div key={task.id}>
-                            <TaskCard task={task} />
-                        </div>
-                    })
+            <div className='tasks-list'>
 
-                ) :
-                (
-                    <div>downloading...</div>
-                )
-            }
+                {taskUser.tasks.length > 0 ?
+                    (
+                        taskUser.tasks.map(task => {
+                            return <div key={task.id}>
+                                <TaskCard task={task} />
+                            </div>
+                        })
+
+                    ) :
+                    (
+                        <div>downloading...</div>
+                    )
+                }
+            </div>
         </div>
     )
 }
